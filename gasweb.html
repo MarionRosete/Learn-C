@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <body style="margin: 60px">
+    <h4>***********JUANA GASOLINE************</h4>
+
+    <div style="display: flex; margin: 20px">
+      <div style="margin-right: 20px">
+        <div style="font-weight: 600">Fuel Type:</div>
+        <p>[R] Regular</p>
+        <p>[U] Unleaded</p>
+        <p>[P] Premium</p>
+        <p>[D] Diesel</p>
+      </div>
+      <div>
+        <div style="font-weight: 600">Price per Liter</div>
+        <p>P 41.85</p>
+        <p>P 40.45</p>
+        <p>P 42.50</p>
+        <p>P 34.15</p>
+      </div>
+    </div>
+    <label for="fuelType">Fuel Type:</label><br />
+    <input type="text" id="fuelType" name="fuelType" value="R" /><br />
+    <label for="transactionType">Transaction Type:</label><br />
+    <input
+      type="text"
+      id="transactionType"
+      name="transactionType"
+      value="C"
+    /><br />
+    <label for="liters">Liters:</label><br />
+    <input type="text" id="liters" name="liters" value="10" /><br />
+    <label for="cash">Cash:</label><br />
+    <input type="text" id="cash" name="cash" value="500" /><br /><br />
+
+    <script>
+      var Module = {
+        arguments: ["R", "C", "10", "500"],
+        print: function (text) {
+          document.getElementById("output").innerText += text + "\n";
+        },
+        onRuntimeInitialized: function () {
+          document.getElementById("runButton").disabled = false;
+        },
+      };
+
+      function runProgram() {
+        var fuelType = document.getElementById("fuelType").value;
+        var transactionType = document.getElementById("transactionType").value;
+        var liters = document.getElementById("liters").value;
+        var cash = document.getElementById("cash").value;
+
+        Module.arguments = [fuelType, transactionType, liters, cash];
+        console.log(Module.arguments);
+        Module.callMain(Module.arguments);
+      }
+    </script>
+    <button id="runButton" onclick="runProgram()" disabled>Run Program</button>
+    <pre id="output"></pre>
+    <script async src="a.out.js"></script>
+  </body>
+</html>
